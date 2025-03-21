@@ -7,7 +7,7 @@ export default function FeedPage() {
     <FlatList 
         data={posts} 
         renderItem={({item}) => <PostListItem post={item}/>}
-        contentContainerStyle={{ gap:13 }}
+        contentContainerStyle={{ gap:13, maxWidth: 512, width:'100%', flex: 1, alignSelf: 'center' }}
         showsVerticalScrollIndicator = {false}
     />
    )
