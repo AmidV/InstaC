@@ -1,7 +1,7 @@
 import { Text, View, Image } from "react-native";
 import { AntDesign, Ionicons, Feather } from "@expo/vector-icons";
 
-export default function PostListItem({ post }) {
+export default function PostListItem({ post }: {post: any}) {
     
 
     return (
