@@ -33,8 +33,8 @@ export default function NewPostPage() {
         <View className="p-5 items-center flex-1">
             { image ? <Image 
                 source={{ uri: image }}
-                className="w-56 aspect-[3/4] rounded-lg shadow-md"
-            /> : <View className="w-56 aspect-[3/4] rounded-lg shadow-md" /> }
+                className="w-56 aspect-[3/4] rounded-lg shadow-md bg-blue-200"
+            /> : <View className="w-56 aspect-[3/4] rounded-lg shadow-md bg-blue-200" /> }
 
             <Text 
                 className="text-blue-500 font-semibold m-5 mb-16"

@@ -6,6 +6,7 @@ import Button from "~/src/components/Button";
 export default function ProfilePage() {
     const [image, setImage] = useState<string | null>(null);
     const [username, setUsername] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
 
     const pickImage = async () => {
             // No permissions request is necessary for launching the image library
@@ -28,10 +29,10 @@ export default function ProfilePage() {
             { image ? (
                 <Image 
                     source={{ uri: image }}
-                    className="w-52 aspect-square self-center rounded-full bg-slate-300"
+                    className="w-52 aspect-square self-center rounded-full bg-blue-200"
                 />) : (
                 <View 
-                    className="w-52 aspect-square self-center rounded-full bg-slate-300" 
+                    className="w-52 aspect-square self-center rounded-full bg-blue-200" 
                 />) 
             }
 
@@ -47,9 +48,16 @@ export default function ProfilePage() {
                 placeholder="Username" 
                 value={username} 
                 onChangeText={(text) => setUsername(text)} 
+                className="border border-slate-300 p-3 rounded-md mb-5"
+            />
+            <Text className="mb-2 text-gray-700 font-semibold">Email</Text>
+            <TextInput 
+                placeholder="Email" 
+                value={email} 
+                onChangeText={(text) => setEmail(text)} 
                 className="border border-slate-300 p-3 rounded-md"
             />
-            <View className="gap-3 mt-auto w-full">
+            <View className="gap-3 mt-auto">
                 <Button title={'Update Profile'} />
                 <Button title={'Sign Out'} />
             </View>
