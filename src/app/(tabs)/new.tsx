@@ -2,6 +2,7 @@ import { Text, TextInput, View, Image, Pressable } from "react-native";
 import { useEffect, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import Button from '~/src/components/Button';
+import { uploadImage } from "~/src/lib/cloudinary";
 
 export default function NewPostPage() {
     const [ caption, setCaption ] = useState<string>('');
@@ -16,10 +17,10 @@ export default function NewPostPage() {
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ['images', 'videos'],
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
           allowsEditing: true,
           aspect: [4, 3],
-          quality: 1,
+          quality: 0.5,
         });
     
         // console.log(result);
@@ -28,6 +29,15 @@ export default function NewPostPage() {
           setImage(result.assets[0].uri);
         }
       };
+
+      const createPost = async () => {
+        if(!image) {
+            return;
+        }
+        const response = await uploadImage(image);
+        // Save a post to a DB
+        console.log('image_id: ', response?.public_id);
+      }
     
     return (
         <View className="p-5 items-center flex-1">
@@ -51,7 +61,7 @@ export default function NewPostPage() {
             />
 
             <View className="mt-auto w-full">
-                <Button title={'Share'} />
+                <Button title={'Share'} onPress={createPost} />
             </View>
         </View>
     );
