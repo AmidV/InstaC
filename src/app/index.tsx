@@ -6,6 +6,6 @@ export default function Home() {
     
     
     return (
-        <Redirect href='/(tabs)/'/>
+        <Redirect href='/(auth)/'/>
     );
 }
